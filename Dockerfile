@@ -1,5 +1,5 @@
 #use a base image with python installed
-FROM python:3.13-slim
+FROM python:3.8-slim
 
 #Set the working directory inside the container
 WORKDIR /app
@@ -8,7 +8,9 @@ WORKDIR /app
 COPY . /app
 
 #install Flask inside the container
-RUN pip install Flask
+RUN pip install Flask flask_sqlalchemy
+
+EXPOSE 5000
 
 #tell docker what command to run the container
-CMD ["python","app.py"] 
+CMD ["python","app.py"]
